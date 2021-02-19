@@ -1,0 +1,33 @@
+
+{% extends "base.html.twig" %}
+{% form_theme formFilm 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+{% if editMode %}
+        <h1>Modification d'une fiche</h1>
+    {% else %}
+        <h1>Création d'une fiche</h1> 
+    {% endif %}
+
+
+{{form_start(formFilm)}}
+
+{{form_row(formFilm.title, {'attr': {'placeholder': "Titre du film"},'label':'Titre du film'})}}
+{{form_row(formFilm.image, {'attr': {'placeholder': "Url de l'image"},'label':'Image'})}}
+{{form_row(formFilm.createdAt, {'attr': {'placeholder': "Date de sortie"},'label':'Date de sortie'})}}
+{{form_row(formFilm.duree, {'attr': {'placeholder': "Durée du film"},'label':'Durée'})}}
+{{form_row(formFilm.synopsys, {'attr': {'placeholder': "Synopsys"},'label':'Synopsys'})}}
+{{form_row(formFilm.resume, {'attr': {'placeholder': "Résumé"},'label':'Résumé détaillé'})}}
+
+<button type="submit" class="btn btn-success">
+    
+    {% if editMode %}
+        Enregistrer les modifications
+    {% else %}
+        Ajouter la fiche 
+    {% endif %}
+</button>
+
+{{form_end(formFilm)}}
+
+{% endblock %}
